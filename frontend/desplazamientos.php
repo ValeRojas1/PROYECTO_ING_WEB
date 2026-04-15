@@ -37,12 +37,12 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                             <thead class="table-light">
                                 <tr>
                                     <th>NÂ° Desplazamiento</th>
-                                    <th>Origen</th>
-                                    <th>Destino</th>
-                                    <th>Motivo</th>
-                                    <th>Fecha</th>
+                                    <th><?php echo __('desp_col_from'); ?></th>
+                                    <th><?php echo __('desp_col_to'); ?></th>
+                                    <th><?php echo __('desp_col_reason'); ?></th>
+                                    <th><?php echo __('desp_col_date'); ?></th>
                                     <th>Bienes</th>
-                                    <th>Acciones</th>
+                                    <th><?php echo __('bienes_col_actions'); ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,4 +76,5 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
     </div>
     
 <?php require_once dirname(__FILE__) . '/layout/footer.php'; ?>
+
 

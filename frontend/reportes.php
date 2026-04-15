@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Reportes PDF
  */
@@ -37,9 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $fecha_inicio = !empty($_POST['fecha_inicio']) ? $_POST['fecha_inicio'] : null;
             $fecha_fin = !empty($_POST['fecha_fin']) ? $_POST['fecha_fin'] : null;
             
-            // Validación de coherencia de rango de fechas
+            // ValidaciÃ³n de coherencia de rango de fechas
             if ($fecha_inicio && $fecha_fin && $fecha_inicio > $fecha_fin) {
-                // No generar reporte, mostrar error vía GET
+                // No generar reporte, mostrar error vÃ­a GET
                 header('Location: reportes.php?error=' . urlencode('La fecha "Desde" no puede ser posterior a la fecha "Hasta".'));
                 exit;
             }
@@ -83,7 +83,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                     </div>
                 <?php endif; ?>
                 
-                <!-- Estadísticas -->
+                <!-- EstadÃ­sticas -->
                 <div class="row mb-4">
                     <div class="col-md-3">
                         <div class="card bg-info text-white">
@@ -112,8 +112,8 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                     <div class="col-md-3">
                         <div class="card bg-danger text-white">
                             <div class="card-body">
-                                <h5 class="card-title">Dañados/Descartados</h5>
-                                <h2><?php echo ($stats['por_estado']['Dañado'] ?? 0) + ($stats['por_estado']['Descartado'] ?? 0); ?></h2>
+                                <h5 class="card-title">DaÃ±ados/Descartados</h5>
+                                <h2><?php echo ($stats['por_estado']['DaÃ±ado'] ?? 0) + ($stats['por_estado']['Descartado'] ?? 0); ?></h2>
                             </div>
                         </div>
                     </div>
@@ -124,13 +124,13 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="mb-0">Reporte de Bienes por Persona</h5>
+                                <h5 class="mb-0"><?php echo __('rep_bienes_persona'); ?></h5>
                             </div>
                             <div class="card-body">
-                                <p class="text-muted">Genera un reporte con todos los bienes asignados a cada persona.</p>
+                                <p class="text-muted"><?php echo __('rep_bienes_desc'); ?></p>
                                 <form method="POST">
                                     <div class="mb-3">
-                                        <label for="persona_id" class="form-label">Filtrar por Persona (opcional)</label>
+                                        <label for="persona_id" class="form-label"><?php echo __('rep_filter_person'); ?></label>
                                         <select class="form-select" id="persona_id" name="persona_id">
                                             <option value="">-- Todas las Personas --</option>
                                             <?php foreach ($personas as $p): ?>
@@ -152,17 +152,17 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="mb-0">Reporte de Desplazamientos</h5>
+                                <h5 class="mb-0"><?php echo __('rep_desp'); ?></h5>
                             </div>
                             <div class="card-body">
-                                <p class="text-muted">Genera un reporte con todos los desplazamientos realizados.</p>
+                                <p class="text-muted"><?php echo __('rep_desp_desc'); ?></p>
                                 <form method="POST" id="formReporteDesplazamientos" novalidate>
                                     <div class="mb-3">
-                                        <label for="fecha_inicio" class="form-label">Desde</label>
+                                        <label for="fecha_inicio" class="form-label"><?php echo __('rep_date_from'); ?></label>
                                         <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="fecha_fin" class="form-label">Hasta</label>
+                                        <label for="fecha_fin" class="form-label"><?php echo __('rep_date_to'); ?></label>
                                         <input type="date" class="form-control" id="fecha_fin" name="fecha_fin">
                                     </div>
                                     <input type="hidden" name="tipo_reporte" value="desplazamientos">
@@ -175,12 +175,12 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                     </div>
                 </div>
                 
-                <!-- Distribución por Persona -->
+                <!-- DistribuciÃ³n por Persona -->
                 <div class="row mt-4">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="mb-0">Distribución de Bienes por Persona</h5>
+                                <h5 class="mb-0">DistribuciÃ³n de Bienes por Persona</h5>
                             </div>
                             <div class="card-body">
                                 <table class="table">
@@ -248,3 +248,4 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
     </script>
     
 <?php require_once dirname(__FILE__) . '/layout/footer.php'; ?>
+

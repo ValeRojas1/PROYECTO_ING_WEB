@@ -115,12 +115,12 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                                     </th>
                                     <?php endif; ?>
                                     <th>CÃ³digo</th>
-                                    <th>Nombre</th>
+                                    <th><?php echo __('bienes_col_name'); ?></th>
                                     <th>DescripciÃ³n</th>
-                                    <th>Estado</th>
-                                    <th>Persona Asignada</th>
-                                    <th>Fecha Registro</th>
-                                    <th>Acciones</th>
+                                    <th><?php echo __('bienes_col_status'); ?></th>
+                                    <th><?php echo __('bienes_col_assigned'); ?></th>
+                                    <th><?php echo __('bienes_col_date'); ?></th>
+                                    <th><?php echo __('bienes_col_actions'); ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -173,7 +173,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                                     <?php endforeach; ?>
                                 <?php else: ?>
                                     <tr>
-                                        <td colspan="<?php echo ($_SESSION['usuario_rol'] === 'admin') ? '8' : '7'; ?>" class="text-center py-3">No hay bienes registrados</td>
+                                        <td colspan="<?php echo ($_SESSION['usuario_rol'] === 'admin') ? '8' : '7'; ?>" class="text-center py-3"><?php echo __('bienes_empty'); ?></td>
                                     </tr>
                                 <?php endif; ?>
                             </tbody>
@@ -218,4 +218,5 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
     </script>
     
 <?php require_once dirname(__FILE__) . '/layout/footer.php'; ?>
+
 

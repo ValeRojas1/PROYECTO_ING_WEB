@@ -102,14 +102,14 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                                         <input type="checkbox" class="form-check-input" id="checkAllHistorial">
                                     </th>
                                     <?php endif; ?>
-                                    <th>Fecha</th>
-                                    <th>Bien</th>
+                                    <th><?php echo __('hist_col_date'); ?></th>
+                                    <th><?php echo __('hist_col_bien'); ?></th>
                                     <th>CÃ³digo</th>
-                                    <th>De (Persona)</th>
-                                    <th>Para (Persona)</th>
+                                    <th><?php echo __('hist_col_from'); ?></th>
+                                    <th><?php echo __('hist_col_to'); ?></th>
                                     <th>AcciÃ³n</th>
                                     <?php if ($_SESSION['usuario_rol'] === 'admin'): ?>
-                                    <th>Opciones</th>
+                                    <th><?php echo __('hist_col_options'); ?></th>
                                     <?php endif; ?>
                                 </tr>
                             </thead>
@@ -198,4 +198,5 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
     </script>
     
 <?php require_once dirname(__FILE__) . '/layout/footer.php'; ?>
+
 

@@ -5,9 +5,9 @@
 
 session_start();
 
-// Alternar formato de fecha/idioma si se solicita
-if (isset($_GET['toggle_date_lang'])) {
-    $_SESSION['date_lang'] = (isset($_SESSION['date_lang']) && $_SESSION['date_lang'] === 'en') ? 'es' : 'en';
+// Alternar idioma general si se solicita
+if (isset($_GET['toggle_lang'])) {
+    $_SESSION['lang'] = (isset($_SESSION['lang']) && $_SESSION['lang'] === 'es') ? 'en' : 'es';
     
     // Redirigir limpiando la URL
     $referer = $_SERVER['HTTP_REFERER'] ?? 'dashboard.php';
@@ -18,7 +18,7 @@ if (isset($_GET['toggle_date_lang'])) {
     $query_str = parse_url($referer, PHP_URL_QUERY);
     if ($query_str) {
         parse_str($query_str, $queryParams);
-        unset($queryParams['toggle_date_lang']);
+        unset($queryParams['toggle_lang']);
         if (!empty($queryParams)) {
             $url_limpia .= '?' . http_build_query($queryParams);
         }
@@ -28,14 +28,16 @@ if (isset($_GET['toggle_date_lang'])) {
     exit();
 }
 
-if (!isset($_SESSION['date_lang'])) {
-    $_SESSION['date_lang'] = 'es'; // Por defecto Español
+if (!isset($_SESSION['lang'])) {
+    $_SESSION['lang'] = 'es'; // Por defecto Español
 }
 
+require_once dirname(__FILE__) . '/lang.php';
+
 // FORMATOS GLOBALES DEPENDIENDO DEL LENGUAJE SELECCIONADO
-define('FORMATO_FECHA', $_SESSION['date_lang'] === 'en' ? 'm/d/Y' : 'd/m/Y');
-define('FORMATO_FECHA_MIN', $_SESSION['date_lang'] === 'en' ? 'm/d/Y H:i' : 'd/m/Y H:i');
-define('FORMATO_FECHA_HORA', $_SESSION['date_lang'] === 'en' ? 'm/d/Y H:i:s' : 'd/m/Y H:i:s');
+define('FORMATO_FECHA', $_SESSION['lang'] === 'en' ? 'm/d/Y' : 'd/m/Y');
+define('FORMATO_FECHA_MIN', $_SESSION['lang'] === 'en' ? 'm/d/Y H:i' : 'd/m/Y H:i');
+define('FORMATO_FECHA_HORA', $_SESSION['lang'] === 'en' ? 'm/d/Y H:i:s' : 'd/m/Y H:i:s');
 
 // Verificar sesión activa
 function verificarSesion() {

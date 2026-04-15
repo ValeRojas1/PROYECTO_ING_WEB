@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Gestión de Personas (Admin)
+ * GestiÃ³n de Personas (Admin)
  */
 
 require_once dirname(__FILE__) . '/../config/database.php';
@@ -20,7 +20,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
         <div class="row">
             <div class="col-md-12">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h1>Gestión de Personas</h1>
+                    <h1>GestiÃ³n de Personas</h1>
                     <div>
                         <?php if ($_SESSION['usuario_rol'] !== 'usuario'): ?>
                         <a href="crear-persona.php" class="btn btn-primary">
@@ -38,11 +38,11 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                         <table class="table table-hover mb-0">
                             <thead class="table-light">
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>Área</th>
-                                    <th>Estado</th>
-                                    <th>Bienes Asignados</th>
-                                    <th>Acciones</th>
+                                    <th><?php echo __('personas_col_name'); ?></th>
+                                    <th>Ãrea</th>
+                                    <th><?php echo __('personas_col_status'); ?></th>
+                                    <th><?php echo __('personas_col_bienes'); ?></th>
+                                    <th><?php echo __('bienes_col_actions'); ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,3 +78,4 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
     </div>
     
 <?php require_once dirname(__FILE__) . '/layout/footer.php'; ?>
+

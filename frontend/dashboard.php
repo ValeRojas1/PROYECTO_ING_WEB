@@ -16,7 +16,7 @@ $estadisticas = $bienService->obtenerEstadisticas();
 require_once dirname(__FILE__) . '/layout/header.php';
 require_once dirname(__FILE__) . '/layout/sidebar.php';
 ?>
-            <h1 class="mb-4">Dashboard</h1>
+            <h1 class="mb-4"><?php echo __('menu_dashboard'); ?></h1>
             
             <!-- EstadÃ­sticas -->
             <div class="row mb-4">
@@ -39,7 +39,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                                 <i class="fas fa-check-circle"></i>
                             </div>
                             <div class="stat-number"><?php echo $estadisticas['asignados']; ?></div>
-                            <div class="stat-label">Asignados</div>
+                            <div class="stat-label"><?php echo __('dash_bienes_asignados'); ?></div>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                                 <i class="fas fa-inbox"></i>
                             </div>
                             <div class="stat-number"><?php echo $estadisticas['disponibles']; ?></div>
-                            <div class="stat-label">Disponibles</div>
+                            <div class="stat-label"><?php echo __('dash_bienes_disponibles'); ?></div>
                         </div>
                     </div>
                 </div>
@@ -109,4 +109,5 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                 </div>
             </div>
 <?php require_once dirname(__FILE__) . '/layout/footer.php'; ?>
+
 
