@@ -10,6 +10,10 @@ require_once dirname(__FILE__) . '/../backend/PersonaDAO.php';
 require_once dirname(__FILE__) . '/../backend/Utilidades.php';
 
 verificarSesion();
+if ($_SESSION['usuario_rol'] === 'usuario') {
+    header('HTTP/1.1 403 Forbidden');
+    exit('Acceso denegado. Solo administradores y supervisores pueden editar personal.');
+}
 
 $persona_id = intval($_GET['id'] ?? 0);
 $personaDAO = new PersonaDAO($conn);

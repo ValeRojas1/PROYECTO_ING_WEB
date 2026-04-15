@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Generar PDF
             $filename = 'Reporte_Bienes_' . date('YmdHis') . '.html';
             header('Content-Type: text/html; charset=utf-8');
-            header('Content-Disposition: inline; filename="' . $filename . '"');
+            header('Content-Disposition: attachment; filename="' . $filename . '"');
             echo $html;
             exit;
             break;
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             $filename = 'Reporte_Desplazamientos_' . date('YmdHis') . '.html';
             header('Content-Type: text/html; charset=utf-8');
-            header('Content-Disposition: inline; filename="' . $filename . '"');
+            header('Content-Disposition: attachment; filename="' . $filename . '"');
             echo $html;
             exit;
             break;
@@ -128,7 +128,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                             </div>
                             <div class="card-body">
                                 <p class="text-muted">Genera un reporte con todos los bienes asignados a cada persona.</p>
-                                <form method="POST" target="_blank">
+                                <form method="POST">
                                     <div class="mb-3">
                                         <label for="persona_id" class="form-label">Filtrar por Persona (opcional)</label>
                                         <select class="form-select" id="persona_id" name="persona_id">
@@ -156,7 +156,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                             </div>
                             <div class="card-body">
                                 <p class="text-muted">Genera un reporte con todos los desplazamientos realizados.</p>
-                                <form method="POST" target="_blank" id="formReporteDesplazamientos" novalidate>
+                                <form method="POST" id="formReporteDesplazamientos" novalidate>
                                     <div class="mb-3">
                                         <label for="fecha_inicio" class="form-label">Desde</label>
                                         <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio">
