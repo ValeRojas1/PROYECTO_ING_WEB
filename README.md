@@ -8,7 +8,7 @@ Un sistema web integral para la gestión y control de bienes patrimoniales insti
 
 ## 🚀 Iniciar Rápidamente
 
-##Integrantes
+## Integrantes
 - Estrada Flores Axel
 - Rojas Camayo Valentino
 
