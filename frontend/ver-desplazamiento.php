@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Ver Desplazamiento
  */
@@ -51,12 +51,12 @@ if (!$desplazamiento) {
                     <div class="card-body">
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <h6 class="text-muted">Número de Desplazamiento</h6>
+                                <h6 class="text-muted">NÃºmero de Desplazamiento</h6>
                                 <p class="fs-5"><code><?php echo htmlspecialchars($desplazamiento['numero_desplazamiento']); ?></code></p>
                             </div>
                             <div class="col-md-6">
                                 <h6 class="text-muted">Fecha</h6>
-                                <p><?php echo date('d/m/Y', strtotime($desplazamiento['fecha'])); ?></p>
+                                <p><?php echo date(FORMATO_FECHA, strtotime($desplazamiento['fecha'])); ?></p>
                             </div>
                         </div>
                         
@@ -86,9 +86,9 @@ if (!$desplazamiento) {
                                 <table class="table table-sm">
                                     <thead>
                                         <tr>
-                                            <th>Código</th>
+                                            <th>CÃ³digo</th>
                                             <th>Nombre</th>
-                                            <th>Descripción</th>
+                                            <th>DescripciÃ³n</th>
                                             <th>Estado</th>
                                         </tr>
                                     </thead>
@@ -120,3 +120,4 @@ if (!$desplazamiento) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+

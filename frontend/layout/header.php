@@ -150,6 +150,9 @@ $sidebar_autohide = in_array($pagina_actual, $paginas_auto_ocultables);
                 <span class="text-white me-3">
                     👤 <?php echo htmlspecialchars($_SESSION['usuario_nombre'] ?? 'Usuario'); ?>
                 </span>
+                <a href="?toggle_date_lang=1" class="btn btn-outline-light btn-sm me-3" title="Cambiar formato de fecha">
+                    <i class="fas fa-calendar-alt"></i> <?php echo (isset($_SESSION['date_lang']) && $_SESSION['date_lang'] === 'en') ? 'EN (M/D/Y)' : 'ES (D/M/Y)'; ?>
+                </a>
                 <a href="logout.php" class="btn btn-outline-light btn-sm">Salir</a>
             </div>
         </div>

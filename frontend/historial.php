@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Historial de Movimientos
  */
@@ -14,32 +14,32 @@ $historialDAO = new HistorialDAO($conn);
 $exito = '';
 $error = '';
 
-// Procesar eliminación (Solo administradores)
+// Procesar eliminaciÃ³n (Solo administradores)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['usuario_rol'] === 'admin') {
     if (isset($_POST['eliminar_historial'])) {
         if ($historialDAO->eliminarTodo()) {
             $exito = 'Todo el historial ha sido eliminado exitosamente.';
-            registrarActividad('Historial eliminado', 'El administrador vació todo el historial');
+            registrarActividad('Historial eliminado', 'El administrador vaciÃ³ todo el historial');
         } else {
-            $error = 'Ocurrió un error al intentar vaciar el historial.';
+            $error = 'OcurriÃ³ un error al intentar vaciar el historial.';
         }
     } elseif (isset($_POST['eliminar_multiples']) && !empty($_POST['ids_historial'])) {
         if ($historialDAO->eliminarMultiples($_POST['ids_historial'])) {
             $exito = 'Se eliminaron ' . count($_POST['ids_historial']) . ' registros seleccionados.';
-            registrarActividad('Historial eliminado', 'El administrador eliminó un lote de registros del historial');
+            registrarActividad('Historial eliminado', 'El administrador eliminÃ³ un lote de registros del historial');
         } else {
-             $error = 'Ocurrió un error al intentar eliminar los registros seleccionados.';
+             $error = 'OcurriÃ³ un error al intentar eliminar los registros seleccionados.';
         }
     } elseif (isset($_POST['eliminar_unico']) && !empty($_POST['id_historial'])) {
         if ($historialDAO->eliminar($_POST['id_historial'])) {
             $exito = 'El registro ha sido eliminado exitosamente.';
-            registrarActividad('Historial eliminado', 'El administrador eliminó un registro del historial');
+            registrarActividad('Historial eliminado', 'El administrador eliminÃ³ un registro del historial');
         } else {
-            $error = 'Ocurrió un error al intentar eliminar el registro.';
+            $error = 'OcurriÃ³ un error al intentar eliminar el registro.';
         }
     }
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $error = 'Acceso denegado. Solo el administrador puede realizar esta acción.';
+    $error = 'Acceso denegado. Solo el administrador puede realizar esta acciÃ³n.';
 }
 
 $historial = $historialDAO->obtenerTodo();
@@ -51,10 +51,10 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
         <div class="row">
             <div class="col-md-12">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h1>Historial de Movimientos (Auditoría)</h1>
+                    <h1>Historial de Movimientos (AuditorÃ­a)</h1>
                     <div class="d-flex gap-2">
                         <?php if ($_SESSION['usuario_rol'] === 'admin'): ?>
-                        <form method="POST" onsubmit="return confirm('¿Está seguro de que desea eliminar TODO el historial permanentemente? Esta acción no se puede deshacer.');">
+                        <form method="POST" onsubmit="return confirm('Â¿EstÃ¡ seguro de que desea eliminar TODO el historial permanentemente? Esta acciÃ³n no se puede deshacer.');">
                             <input type="hidden" name="eliminar_historial" value="1">
                             <button type="submit" class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i> Vaciar Historial
@@ -84,7 +84,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                 
                 <div class="card">
                     <?php if ($_SESSION['usuario_rol'] === 'admin'): ?>
-                    <form method="POST" id="formEliminarMultiplesHistorial" onsubmit="return confirm('¿Está seguro de eliminar los registros del historial seleccionados?');">
+                    <form method="POST" id="formEliminarMultiplesHistorial" onsubmit="return confirm('Â¿EstÃ¡ seguro de eliminar los registros del historial seleccionados?');">
                         <input type="hidden" name="eliminar_multiples" value="1">
                         <div class="px-3 pt-3">
                             <button type="submit" class="btn btn-danger btn-sm" id="btnEliminarVariosHistorial" disabled>
@@ -104,10 +104,10 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                                     <?php endif; ?>
                                     <th>Fecha</th>
                                     <th>Bien</th>
-                                    <th>Código</th>
+                                    <th>CÃ³digo</th>
                                     <th>De (Persona)</th>
                                     <th>Para (Persona)</th>
-                                    <th>Acción</th>
+                                    <th>AcciÃ³n</th>
                                     <?php if ($_SESSION['usuario_rol'] === 'admin'): ?>
                                     <th>Opciones</th>
                                     <?php endif; ?>
@@ -123,7 +123,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                                             </td>
                                             <?php endif; ?>
                                             <td>
-                                                <small class="text-muted"><?php echo date('d/m/Y H:i', strtotime($h['fecha'])); ?></small>
+                                                <small class="text-muted"><?php echo date(FORMATO_FECHA_MIN, strtotime($h['fecha'])); ?></small>
                                             </td>
                                             <td><?php echo htmlspecialchars($h['nombre'] ?? ''); ?></td>
                                             <td><code><?php echo htmlspecialchars($h['codigo_patrimonial'] ?? ''); ?></code></td>
@@ -134,7 +134,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                                             </td>
                                             <?php if ($_SESSION['usuario_rol'] === 'admin'): ?>
                                             <td>
-                                                <form method="POST" style="display:inline;" onsubmit="return confirm('¿Eliminar este registro del historial?');">
+                                                <form method="POST" style="display:inline;" onsubmit="return confirm('Â¿Eliminar este registro del historial?');">
                                                     <input type="hidden" name="eliminar_unico" value="1">
                                                     <input type="hidden" name="id_historial" value="<?php echo $h['id']; ?>">
                                                     <button type="submit" class="btn btn-sm btn-outline-danger">
@@ -198,3 +198,4 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
     </script>
     
 <?php require_once dirname(__FILE__) . '/layout/footer.php'; ?>
+

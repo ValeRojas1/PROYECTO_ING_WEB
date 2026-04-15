@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Ver Bien
  */
@@ -58,7 +58,7 @@ if (!$bien) {
                     <div class="card-body">
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <h6 class="text-muted">Código Patrimonial</h6>
+                                <h6 class="text-muted">CÃ³digo Patrimonial</h6>
                                 <p class="fs-5"><code><?php echo htmlspecialchars($bien['codigo_patrimonial']); ?></code></p>
                             </div>
                             <div class="col-md-6">
@@ -67,7 +67,7 @@ if (!$bien) {
                                     echo match($bien['estado']) {
                                         'Disponible' => 'success',
                                         'Asignado' => 'info',
-                                        'Dañado' => 'warning',
+                                        'DaÃ±ado' => 'warning',
                                         'Descartado' => 'danger',
                                         default => 'secondary'
                                     };
@@ -86,8 +86,8 @@ if (!$bien) {
                         
                         <div class="row mb-3">
                             <div class="col-md-12">
-                                <h6 class="text-muted">Descripción</h6>
-                                <p><?php echo htmlspecialchars($bien['descripcion'] ?? 'Sin descripción'); ?></p>
+                                <h6 class="text-muted">DescripciÃ³n</h6>
+                                <p><?php echo htmlspecialchars($bien['descripcion'] ?? 'Sin descripciÃ³n'); ?></p>
                             </div>
                         </div>
                         
@@ -110,7 +110,7 @@ if (!$bien) {
                             </div>
                             <div class="col-md-6">
                                 <h6 class="text-muted">Fecha de Registro</h6>
-                                <p><?php echo date('d/m/Y H:i', strtotime($bien['fecha_registro'])); ?></p>
+                                <p><?php echo date(FORMATO_FECHA_MIN, strtotime($bien['fecha_registro'])); ?></p>
                             </div>
                         </div>
                         
@@ -125,13 +125,13 @@ if (!$bien) {
                                             <th>Fecha</th>
                                             <th>De (Persona)</th>
                                             <th>Para (Persona)</th>
-                                            <th>Acción</th>
+                                            <th>AcciÃ³n</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php foreach ($historial as $h): ?>
                                             <tr>
-                                                <td><small><?php echo date('d/m/Y H:i', strtotime($h['fecha'])); ?></small></td>
+                                                <td><small><?php echo date(FORMATO_FECHA_MIN, strtotime($h['fecha'])); ?></small></td>
                                                 <td><?php echo htmlspecialchars($h['persona_anterior'] ?? '-'); ?></td>
                                                 <td><?php echo htmlspecialchars($h['persona_nueva'] ?? '-'); ?></td>
                                                 <td><?php echo htmlspecialchars($h['accion']); ?></td>
@@ -152,3 +152,4 @@ if (!$bien) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+

@@ -56,7 +56,13 @@ function registrarActividad($actividad, $detalles = '') {
 /**
  * Formatear fecha
  */
-function formatearFecha($fecha, $formato = 'd/m/Y') {
+function formatearFecha($fecha, $formato = FORMATO_FECHA) {
+    if (strpos($formato, 'H:i:s') !== false) {
+        $formato = FORMATO_FECHA_HORA;
+    } elseif (strpos($formato, 'H:i') !== false) {
+        $formato = FORMATO_FECHA_MIN;
+    }
+    
     $timestamp = strtotime($fecha);
     return date($formato, $timestamp);
 }

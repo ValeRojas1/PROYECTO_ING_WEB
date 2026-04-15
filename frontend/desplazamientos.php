@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Listado de Desplazamientos
  */
@@ -36,7 +36,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                         <table class="table table-hover mb-0">
                             <thead class="table-light">
                                 <tr>
-                                    <th>N° Desplazamiento</th>
+                                    <th>NÂ° Desplazamiento</th>
                                     <th>Origen</th>
                                     <th>Destino</th>
                                     <th>Motivo</th>
@@ -53,7 +53,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                                             <td><?php echo htmlspecialchars($d['persona_origen']); ?></td>
                                             <td><?php echo htmlspecialchars($d['persona_destino']); ?></td>
                                             <td><?php echo htmlspecialchars($d['motivo']); ?></td>
-                                            <td><?php echo date('d/m/Y', strtotime($d['fecha'])); ?></td>
+                                            <td><?php echo date(FORMATO_FECHA, strtotime($d['fecha'])); ?></td>
                                             <td><span class="badge bg-info"><?php echo $d['cantidad_bienes']; ?></span></td>
                                             <td>
                                                 <a href="ver-desplazamiento.php?id=<?php echo $d['id']; ?>" class="btn btn-sm btn-info">
@@ -76,3 +76,4 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
     </div>
     
 <?php require_once dirname(__FILE__) . '/layout/footer.php'; ?>
+
