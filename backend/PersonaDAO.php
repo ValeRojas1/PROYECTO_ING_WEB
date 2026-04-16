@@ -22,8 +22,12 @@ class PersonaDAO {
         
         $stmt->bind_param("ss", $nombre, $area);
         
-        if ($stmt->execute()) {
-            return $this->conn->insert_id;
+        $result = $stmt->execute();
+        $id = $this->conn->insert_id;
+        $stmt->close();
+        
+        if ($result) {
+            return $id;
         }
         return false;
     }
@@ -39,7 +43,9 @@ class PersonaDAO {
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $resultado = $stmt->get_result();
-        return $resultado->fetch_assoc();
+        $row = $resultado->fetch_assoc();
+        $stmt->close();
+        return $row;
     }
     
     /**
@@ -61,7 +67,9 @@ class PersonaDAO {
         );
         
         $stmt->bind_param("ssii", $nombre, $area, $estado, $id);
-        return $stmt->execute();
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
     }
     
     /**
@@ -76,7 +84,9 @@ class PersonaDAO {
         $stmt->bind_param("i", $persona_id);
         $stmt->execute();
         $resultado = $stmt->get_result();
-        return $resultado->fetch_all(MYSQLI_ASSOC);
+        $rows = $resultado->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+        return $rows;
     }
     
     /**
@@ -90,8 +100,10 @@ class PersonaDAO {
         $estado = ESTADO_ASIGNADO;
         $stmt->bind_param("is", $persona_id, $estado);
         $stmt->execute();
-        $resultado = $stmt->get_result()->fetch_assoc();
-        return $resultado['total'];
+        $resultado = $stmt->get_result();
+        $row = $resultado->fetch_assoc();
+        $stmt->close();
+        return $row['total'];
     }
 }
 

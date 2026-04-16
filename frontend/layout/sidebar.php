@@ -13,11 +13,20 @@ $pagina_actual = basename($_SERVER['PHP_SELF']);
                 <a href="bienes.php" class="nav-link <?php echo $pagina_actual == 'bienes.php' ? 'active' : ''; ?>">
                     <i class="fas fa-box"></i> <span class="nav-text"><?php echo __('menu_bienes'); ?></span>
                 </a>
+                <a href="registrar-bien.php" class="nav-link <?php echo $pagina_actual == 'registrar-bien.php' ? 'active' : ''; ?>">
+                    <i class="fas fa-plus"></i> <span class="nav-text"><?php echo __('menu_registrar_bien'); ?></span>
+                </a>
+                <a href="importar-excel.php" class="nav-link <?php echo $pagina_actual == 'importar-excel.php' ? 'active' : ''; ?>">
+                    <i class="fas fa-file-import"></i> <span class="nav-text"><?php echo __('menu_importar_excel'); ?></span>
+                </a>
                 <a href="personas.php" class="nav-link <?php echo $pagina_actual == 'personas.php' ? 'active' : ''; ?>">
                     <i class="fas fa-people-carry"></i> <span class="nav-text"><?php echo __('menu_personas'); ?></span>
                 </a>
                 <a href="desplazamientos.php" class="nav-link <?php echo $pagina_actual == 'desplazamientos.php' ? 'active' : ''; ?>">
                     <i class="fas fa-exchange-alt"></i> <span class="nav-text"><?php echo __('menu_desplazamientos'); ?></span>
+                </a>
+                <a href="nuevo-desplazamiento.php" class="nav-link <?php echo $pagina_actual == 'nuevo-desplazamiento.php' ? 'active' : ''; ?>">
+                    <i class="fas fa-plus"></i> <span class="nav-text"><?php echo __('menu_nuevo_desplazamiento'); ?></span>
                 </a>
                 <a href="reportes.php" class="nav-link <?php echo $pagina_actual == 'reportes.php' ? 'active' : ''; ?>">
                     <i class="fas fa-file-pdf"></i> <span class="nav-text"><?php echo __('menu_reportes'); ?></span>

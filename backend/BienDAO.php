@@ -23,8 +23,12 @@ class BienDAO {
         
         $stmt->bind_param("ssssi", $codigo_patrimonial, $nombre, $descripcion, $estado, $persona_id);
         
-        if ($stmt->execute()) {
-            return $this->conn->insert_id;
+        $result = $stmt->execute();
+        $id = $this->conn->insert_id;
+        $stmt->close();
+        
+        if ($result) {
+            return $id;
         }
         return false;
     }
@@ -44,7 +48,9 @@ class BienDAO {
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $resultado = $stmt->get_result();
-        return $resultado->fetch_assoc();
+        $row = $resultado->fetch_assoc();
+        $stmt->close();
+        return $row;
     }
     
     /**
@@ -59,7 +65,9 @@ class BienDAO {
         $stmt->bind_param("s", $codigo);
         $stmt->execute();
         $resultado = $stmt->get_result();
-        return $resultado->fetch_assoc();
+        $row = $resultado->fetch_assoc();
+        $stmt->close();
+        return $row;
     }
     
     /**
@@ -88,9 +96,13 @@ class BienDAO {
             $stmt = $this->conn->prepare($query);
             $stmt->bind_param("s", $valor);
             $stmt->execute();
-            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+            $resultado = $stmt->get_result();
+            $rows = $resultado->fetch_all(MYSQLI_ASSOC);
+            $stmt->close();
+            return $rows;
         } else {
-            return $this->conn->query($query)->fetch_all(MYSQLI_ASSOC);
+            $resultado = $this->conn->query($query);
+            return $resultado->fetch_all(MYSQLI_ASSOC);
         }
     }
     
@@ -103,7 +115,9 @@ class BienDAO {
         );
         
         $stmt->bind_param("sssii", $nombre, $descripcion, $estado, $persona_id, $id);
-        return $stmt->execute();
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
     }
     
     /**
@@ -116,7 +130,9 @@ class BienDAO {
         );
         
         $stmt->bind_param("isi", $persona_id, $estado, $bien_id);
-        return $stmt->execute();
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
     }
     
     /**
@@ -131,7 +147,9 @@ class BienDAO {
         $stmt->bind_param("i", $persona_id);
         $stmt->execute();
         $resultado = $stmt->get_result();
-        return $resultado->fetch_all(MYSQLI_ASSOC);
+        $rows = $resultado->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+        return $rows;
     }
     
     /**
@@ -159,8 +177,11 @@ class BienDAO {
             $stmt->bind_param("s", $codigo);
         }
         
-        $resultado = $stmt->get_result()->fetch_assoc();
-        return $resultado['total'] > 0;
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $row = $resultado->fetch_assoc();
+        $stmt->close();
+        return $row['total'] > 0;
     }
     
     /**
@@ -170,7 +191,7 @@ class BienDAO {
     public function eliminar($id) {
         $id = intval($id);
         $this->conn->query("DELETE FROM historial WHERE bien_id = $id");
-        $this->conn->query("DELETE FROM desplazamiento_bienes WHERE bien_id = $id");
+        $this->conn->query("DELETE FROM detalle_desplazamiento WHERE bien_id = $id");
         return $this->conn->query("DELETE FROM bienes WHERE id = $id");
     }
     
@@ -184,7 +205,7 @@ class BienDAO {
         $ids_str = implode(',', $ids_clean);
         
         $this->conn->query("DELETE FROM historial WHERE bien_id IN ($ids_str)");
-        $this->conn->query("DELETE FROM desplazamiento_bienes WHERE bien_id IN ($ids_str)");
+        $this->conn->query("DELETE FROM detalle_desplazamiento WHERE bien_id IN ($ids_str)");
         return $this->conn->query("DELETE FROM bienes WHERE id IN ($ids_str)");
     }
 }

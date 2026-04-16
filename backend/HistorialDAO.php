@@ -22,7 +22,9 @@ class HistorialDAO {
         );
         
         $stmt->bind_param("iiis", $bien_id, $persona_anterior_id, $persona_nueva_id, $accion);
-        return $stmt->execute();
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
     }
     
     /**
@@ -44,7 +46,9 @@ class HistorialDAO {
         $stmt->bind_param("i", $bien_id);
         $stmt->execute();
         $resultado = $stmt->get_result();
-        return $resultado->fetch_all(MYSQLI_ASSOC);
+        $rows = $resultado->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+        return $rows;
     }
     
     /**
@@ -66,7 +70,9 @@ class HistorialDAO {
         $stmt->bind_param("ii", $persona_id, $persona_id);
         $stmt->execute();
         $resultado = $stmt->get_result();
-        return $resultado->fetch_all(MYSQLI_ASSOC);
+        $rows = $resultado->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+        return $rows;
     }
     
     /**
@@ -99,7 +105,9 @@ class HistorialDAO {
     public function eliminar($id) {
         $stmt = $this->conn->prepare("DELETE FROM historial WHERE id = ?");
         $stmt->bind_param("i", $id);
-        return $stmt->execute();
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
     }
     
     /**

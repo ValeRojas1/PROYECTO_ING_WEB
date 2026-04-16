@@ -18,8 +18,11 @@ $diccionario = [
         // SIDEBAR
         'menu_dashboard' => 'Dashboard',
         'menu_bienes' => 'Bienes',
+        'menu_registrar_bien' => 'Registrar Bien',
+        'menu_importar_excel' => 'Importar CSV',
         'menu_personas' => 'Personas',
         'menu_desplazamientos' => 'Desplazamientos',
+        'menu_nuevo_desplazamiento' => 'Nuevo Desplazamiento',
         'menu_reportes' => 'Reportes',
         'menu_historial' => 'Historial',
         'menu_users' => 'Usuarios',
@@ -113,8 +116,11 @@ $diccionario = [
         // SIDEBAR
         'menu_dashboard' => 'Dashboard',
         'menu_bienes' => 'Assets',
+        'menu_registrar_bien' => 'Register Asset',
+        'menu_importar_excel' => 'Import CSV',
         'menu_personas' => 'Personnel',
         'menu_desplazamientos' => 'Movements',
+        'menu_nuevo_desplazamiento' => 'New Movement',
         'menu_reportes' => 'Reports',
         'menu_historial' => 'Audit History',
         'menu_users' => 'Users',

@@ -23,8 +23,12 @@ class DesplazamientoDAO {
         
         $stmt->bind_param("siiss", $numero_desplazamiento, $persona_origen_id, $persona_destino_id, $motivo, $fecha);
         
-        if ($stmt->execute()) {
-            return $this->conn->insert_id;
+        $result = $stmt->execute();
+        $id = $this->conn->insert_id;
+        $stmt->close();
+        
+        if ($result) {
+            return $id;
         }
         return false;
     }
@@ -38,7 +42,9 @@ class DesplazamientoDAO {
         );
         
         $stmt->bind_param("ii", $desplazamiento_id, $bien_id);
-        return $stmt->execute();
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
     }
     
     /**
@@ -57,7 +63,9 @@ class DesplazamientoDAO {
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $resultado = $stmt->get_result();
-        return $resultado->fetch_assoc();
+        $row = $resultado->fetch_assoc();
+        $stmt->close();
+        return $row;
     }
     
     /**
@@ -92,7 +100,9 @@ class DesplazamientoDAO {
         $stmt->bind_param("i", $desplazamiento_id);
         $stmt->execute();
         $resultado = $stmt->get_result();
-        return $resultado->fetch_all(MYSQLI_ASSOC);
+        $rows = $resultado->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+        return $rows;
     }
     
     /**
@@ -105,8 +115,10 @@ class DesplazamientoDAO {
         
         $stmt->bind_param("s", $numero);
         $stmt->execute();
-        $resultado = $stmt->get_result()->fetch_assoc();
-        return $resultado['total'] > 0;
+        $resultado = $stmt->get_result();
+        $row = $resultado->fetch_assoc();
+        $stmt->close();
+        return $row['total'] > 0;
     }
     
     /**

@@ -20,7 +20,9 @@ class UsuarioDAO {
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $resultado = $stmt->get_result();
-        return $resultado->fetch_assoc();
+        $row = $resultado->fetch_assoc();
+        $stmt->close();
+        return $row;
     }
     
     /**
@@ -31,7 +33,9 @@ class UsuarioDAO {
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $resultado = $stmt->get_result();
-        return $resultado->fetch_assoc();
+        $row = $resultado->fetch_assoc();
+        $stmt->close();
+        return $row;
     }
     
     /**
@@ -47,8 +51,12 @@ class UsuarioDAO {
         
         $stmt->bind_param("ssss", $nombre, $email, $password_hash, $rol);
         
-        if ($stmt->execute()) {
-            return $this->conn->insert_id;
+        $result = $stmt->execute();
+        $id = $this->conn->insert_id;
+        $stmt->close();
+        
+        if ($result) {
+            return $id;
         }
         return false;
     }
@@ -62,7 +70,9 @@ class UsuarioDAO {
         );
         
         $stmt->bind_param("ssii", $nombre, $rol, $estado, $id);
-        return $stmt->execute();
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
     }
     
     /**
@@ -73,7 +83,9 @@ class UsuarioDAO {
         
         $stmt = $this->conn->prepare("UPDATE usuarios SET password = ? WHERE id = ?");
         $stmt->bind_param("si", $password_hash, $id);
-        return $stmt->execute();
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
     }
     
     /**
