@@ -1,6 +1,6 @@
 ﻿<?php
 /**
- * GestiÃ³n de Usuarios (Admin)
+ * Gestión de Usuarios (Admin)
  */
 
 require_once dirname(__FILE__) . '/../config/database.php';
@@ -24,7 +24,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
         <div class="row">
             <div class="col-md-12">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h1>GestiÃ³n de Usuarios</h1>
+                    <h1>Gestión de Usuarios</h1>
                     <div>
                         <a href="crear-usuario.php" class="btn btn-primary">
                             <i class="fas fa-plus"></i> Nuevo Usuario
@@ -44,7 +44,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                                     <th>Email</th>
                                     <th>Rol</th>
                                     <th>Estado</th>
-                                    <th>Fecha CreaciÃ³n</th>
+                                    <th>Fecha Creación</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>

@@ -51,7 +51,7 @@ if (!$desplazamiento) {
                     <div class="card-body">
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <h6 class="text-muted">NÃºmero de Desplazamiento</h6>
+                                <h6 class="text-muted">Número de Desplazamiento</h6>
                                 <p class="fs-5"><code><?php echo htmlspecialchars($desplazamiento['numero_desplazamiento']); ?></code></p>
                             </div>
                             <div class="col-md-6">
@@ -86,9 +86,9 @@ if (!$desplazamiento) {
                                 <table class="table table-sm">
                                     <thead>
                                         <tr>
-                                            <th>CÃ³digo</th>
+                                            <th>Código</th>
                                             <th>Nombre</th>
-                                            <th>DescripciÃ³n</th>
+                                            <th>Descripción</th>
                                             <th>Estado</th>
                                         </tr>
                                     </thead>

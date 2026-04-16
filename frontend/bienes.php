@@ -17,13 +17,13 @@ $bienService = new BienService($conn);
 $exito = '';
 $error = '';
 
-// Procesar eliminaciÃ³n (Solo administradores)
+// Procesar eliminación (Solo administradores)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['usuario_rol'] === 'admin') {
     if (isset($_POST['eliminar_bienes']) && !empty($_POST['bienes_ids'])) {
         $resultado = $bienService->eliminarBienes($_POST['bienes_ids']);
         if (isset($resultado['success'])) {
             $exito = "Se eliminaron {$resultado['cantidad']} bienes exitosamente.";
-            registrarActividad('Bienes eliminados', "El administrador eliminÃ³ {$resultado['cantidad']} bienes en lote");
+            registrarActividad('Bienes eliminados', "El administrador eliminó {$resultado['cantidad']} bienes en lote");
         } else {
             $error = $resultado['error'] ?? 'Error al eliminar los bienes.';
         }
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['usuario_rol'] === 'admin
         $resultado = $bienService->eliminarBienes([$_POST['id_bien']]);
         if (isset($resultado['success'])) {
             $exito = "El bien fue eliminado exitosamente.";
-            registrarActividad('Bien eliminado', "El administrador eliminÃ³ el bien ID: " . $_POST['id_bien']);
+            registrarActividad('Bien eliminado', "El administrador eliminó el bien ID: " . $_POST['id_bien']);
         } else {
             $error = $resultado['error'] ?? 'Error al eliminar el bien.';
         }
@@ -95,7 +95,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                 
                 <!-- Tabla -->
                 <?php if ($_SESSION['usuario_rol'] === 'admin'): ?>
-                <form method="POST" id="formEliminarMultiples" onsubmit="return confirm('Â¿EstÃ¡ seguro de eliminar los bienes seleccionados? Se borrarÃ¡n tambiÃ©n sus historiales y desplazamientos.');">
+                <form method="POST" id="formEliminarMultiples" onsubmit="return confirm('¿Está seguro de eliminar los bienes seleccionados? Se borrarán también sus historiales y desplazamientos.');">
                     <input type="hidden" name="eliminar_bienes" value="1">
                     <div class="mb-2">
                         <button type="submit" class="btn btn-danger btn-sm" id="btnEliminarVarios" disabled>
@@ -114,9 +114,9 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                                         <input type="checkbox" class="form-check-input" id="checkAll">
                                     </th>
                                     <?php endif; ?>
-                                    <th>CÃ³digo</th>
+                                    <th>Código</th>
                                     <th><?php echo __('bienes_col_name'); ?></th>
-                                    <th>DescripciÃ³n</th>
+                                    <th>Descripción</th>
                                     <th><?php echo __('bienes_col_status'); ?></th>
                                     <th><?php echo __('bienes_col_assigned'); ?></th>
                                     <th><?php echo __('bienes_col_date'); ?></th>
@@ -140,7 +140,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                                                     echo match($bien['estado']) {
                                                         'Disponible' => 'success',
                                                         'Asignado' => 'info',
-                                                        'DaÃ±ado' => 'warning',
+                                                        'Dañado' => 'warning',
                                                         'Descartado' => 'danger',
                                                         default => 'secondary'
                                                     };
@@ -160,7 +160,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                                 <?php if ($_SESSION['usuario_rol'] === 'admin'): ?>
-                                                <form method="POST" style="display:inline;" onsubmit="return confirm('Â¿Eliminar este bien?');">
+                                                <form method="POST" style="display:inline;" onsubmit="return confirm('¿Eliminar este bien?');">
                                                     <input type="hidden" name="eliminar_bien_unico" value="1">
                                                     <input type="hidden" name="id_bien" value="<?php echo $bien['id']; ?>">
                                                     <button type="submit" class="btn btn-sm btn-danger">

@@ -37,9 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $fecha_inicio = !empty($_POST['fecha_inicio']) ? $_POST['fecha_inicio'] : null;
             $fecha_fin = !empty($_POST['fecha_fin']) ? $_POST['fecha_fin'] : null;
             
-            // ValidaciÃ³n de coherencia de rango de fechas
+            // Validación de coherencia de rango de fechas
             if ($fecha_inicio && $fecha_fin && $fecha_inicio > $fecha_fin) {
-                // No generar reporte, mostrar error vÃ­a GET
+                // No generar reporte, mostrar error vía GET
                 header('Location: reportes.php?error=' . urlencode('La fecha "Desde" no puede ser posterior a la fecha "Hasta".'));
                 exit;
             }
@@ -83,7 +83,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                     </div>
                 <?php endif; ?>
                 
-                <!-- EstadÃ­sticas -->
+                <!-- Estadísticas -->
                 <div class="row mb-4">
                     <div class="col-md-3">
                         <div class="card bg-info text-white">
@@ -112,8 +112,8 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                     <div class="col-md-3">
                         <div class="card bg-danger text-white">
                             <div class="card-body">
-                                <h5 class="card-title">DaÃ±ados/Descartados</h5>
-                                <h2><?php echo ($stats['por_estado']['DaÃ±ado'] ?? 0) + ($stats['por_estado']['Descartado'] ?? 0); ?></h2>
+                                <h5 class="card-title">Dañados/Descartados</h5>
+                                <h2><?php echo ($stats['por_estado']['Dañado'] ?? 0) + ($stats['por_estado']['Descartado'] ?? 0); ?></h2>
                             </div>
                         </div>
                     </div>
@@ -175,12 +175,12 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                     </div>
                 </div>
                 
-                <!-- DistribuciÃ³n por Persona -->
+                <!-- Distribución por Persona -->
                 <div class="row mt-4">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="mb-0">DistribuciÃ³n de Bienes por Persona</h5>
+                                <h5 class="mb-0">Distribución de Bienes por Persona</h5>
                             </div>
                             <div class="card-body">
                                 <table class="table">

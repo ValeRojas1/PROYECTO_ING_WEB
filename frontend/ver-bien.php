@@ -58,7 +58,7 @@ if (!$bien) {
                     <div class="card-body">
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <h6 class="text-muted">CÃ³digo Patrimonial</h6>
+                                <h6 class="text-muted">Código Patrimonial</h6>
                                 <p class="fs-5"><code><?php echo htmlspecialchars($bien['codigo_patrimonial']); ?></code></p>
                             </div>
                             <div class="col-md-6">
@@ -67,7 +67,7 @@ if (!$bien) {
                                     echo match($bien['estado']) {
                                         'Disponible' => 'success',
                                         'Asignado' => 'info',
-                                        'DaÃ±ado' => 'warning',
+                                        'Dañado' => 'warning',
                                         'Descartado' => 'danger',
                                         default => 'secondary'
                                     };
@@ -86,8 +86,8 @@ if (!$bien) {
                         
                         <div class="row mb-3">
                             <div class="col-md-12">
-                                <h6 class="text-muted">DescripciÃ³n</h6>
-                                <p><?php echo htmlspecialchars($bien['descripcion'] ?? 'Sin descripciÃ³n'); ?></p>
+                                <h6 class="text-muted">Descripción</h6>
+                                <p><?php echo htmlspecialchars($bien['descripcion'] ?? 'Sin descripción'); ?></p>
                             </div>
                         </div>
                         
@@ -125,7 +125,7 @@ if (!$bien) {
                                             <th>Fecha</th>
                                             <th>De (Persona)</th>
                                             <th>Para (Persona)</th>
-                                            <th>AcciÃ³n</th>
+                                            <th>Acción</th>
                                         </tr>
                                     </thead>
                                     <tbody>

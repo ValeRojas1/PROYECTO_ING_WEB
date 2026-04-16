@@ -1,6 +1,6 @@
-﻿<?php
+<?php
 /**
- * Dashboard - PÃ¡gina Principal
+ * Dashboard - Página Principal
  */
 
 require_once dirname(__FILE__) . '/../config/database.php';
@@ -18,7 +18,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
 ?>
             <h1 class="mb-4"><?php echo __('menu_dashboard'); ?></h1>
             
-            <!-- EstadÃ­sticas -->
+            <!-- Estadísticas -->
             <div class="row mb-4">
                 <div class="col-md-3">
                     <div class="card card-stat" style="border-top: 3px solid var(--info);">
@@ -27,7 +27,7 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                                 <i class="fas fa-boxes"></i>
                             </div>
                             <div class="stat-number"><?php echo $estadisticas['total']; ?></div>
-                            <div class="stat-label">Total de Bienes</div>
+                            <div class="stat-label"><?php echo __('dash_total_bienes'); ?></div>
                         </div>
                     </div>
                 </div>
@@ -62,31 +62,31 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                             <div class="stat-icon text-danger">
                                 <i class="fas fa-exclamation-circle"></i>
                             </div>
-                            <div class="stat-number"><?php echo $estadisticas['daÃ±ados'] + $estadisticas['descartados']; ?></div>
-                            <div class="stat-label">DaÃ±ados/Descartados</div>
+                            <div class="stat-number"><?php echo $estadisticas['dañados'] + $estadisticas['descartados']; ?></div>
+                            <div class="stat-label"><?php echo __('dash_bienes_danados'); ?></div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Acciones RÃ¡pidas -->
+            <!-- Acciones Rápidas -->
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title mb-3">Acciones RÃ¡pidas</h5>
+                            <h5 class="card-title mb-3"><?php echo __('dash_quick_actions'); ?></h5>
                             <div class="d-flex gap-2 flex-wrap">
                                 <a href="registrar-bien.php" class="btn btn-primary btn-action">
-                                    <i class="fas fa-plus"></i> Registrar Nuevo Bien
+                                    <i class="fas fa-plus"></i> <?php echo __('dash_add_asset'); ?>
                                 </a>
                                 <a href="importar-excel.php" class="btn btn-info btn-action">
-                                    <i class="fas fa-file-import"></i> Importar desde Excel
+                                    <i class="fas fa-file-import"></i> <?php echo __('dash_import_excel'); ?>
                                 </a>
                                 <a href="nuevo-desplazamiento.php" class="btn btn-warning btn-action">
-                                    <i class="fas fa-exchange-alt"></i> Hacer Desplazamiento
+                                    <i class="fas fa-exchange-alt"></i> <?php echo __('dash_make_movement'); ?>
                                 </a>
                                 <a href="reportes.php" class="btn btn-success btn-action">
-                                    <i class="fas fa-file-pdf"></i> Generar Reportes
+                                    <i class="fas fa-file-pdf"></i> <?php echo __('dash_gen_reports'); ?>
                                 </a>
                             </div>
                         </div>
@@ -94,16 +94,16 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                 </div>
             </div>
             
-            <!-- Ãšltima actividad -->
+            <!-- Última actividad -->
             <div class="row mt-4">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">InformaciÃ³n del Sistema</h5>
-                            <p><strong>Usuario:</strong> <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?></p>
-                            <p><strong>Rol:</strong> <?php echo strtoupper($_SESSION['usuario_rol']); ?></p>
-                            <p><strong>Login:</strong> <?php echo date(FORMATO_FECHA_HORA, $_SESSION['login_time']); ?></p>
-                            <p class="text-muted mb-0"><small>Sistema de Control Patrimonial v1.0</small></p>
+                            <h5 class="card-title"><?php echo __('dash_sys_info'); ?></h5>
+                            <p><strong><?php echo __('dash_user'); ?></strong> <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?></p>
+                            <p><strong><?php echo __('dash_role'); ?></strong> <?php echo strtoupper($_SESSION['usuario_rol']); ?></p>
+                            <p><strong><?php echo __('dash_login'); ?></strong> <?php echo date(FORMATO_FECHA_HORA, $_SESSION['login_time']); ?></p>
+                            <p class="text-muted mb-0"><small><?php echo __('dash_sys_ver'); ?></small></p>
                         </div>
                     </div>
                 </div>
