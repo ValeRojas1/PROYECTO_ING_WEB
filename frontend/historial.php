@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Historial de Movimientos
  */
@@ -7,6 +7,7 @@ require_once dirname(__FILE__) . '/../config/database.php';
 require_once dirname(__FILE__) . '/../config/constants.php';
 require_once dirname(__FILE__) . '/../config/session.php';
 require_once dirname(__FILE__) . '/../backend/HistorialDAO.php';
+require_once dirname(__FILE__) . '/../backend/Utilidades.php';
 
 verificarSesion();
 

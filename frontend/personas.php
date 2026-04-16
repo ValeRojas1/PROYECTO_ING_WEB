@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Gestión de Personas (Admin)
  */
@@ -25,6 +25,9 @@ require_once dirname(__FILE__) . '/layout/sidebar.php';
                         <?php if ($_SESSION['usuario_rol'] !== 'usuario'): ?>
                         <a href="crear-persona.php" class="btn btn-primary">
                             <i class="fas fa-plus"></i> Nueva Persona
+                        </a>
+                        <a href="importar-personas.php" class="btn btn-info">
+                            <i class="fas fa-file-import"></i> Importar CSV
                         </a>
                         <?php endif; ?>
                         <a href="dashboard.php" class="btn btn-secondary">

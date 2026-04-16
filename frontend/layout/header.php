@@ -3,7 +3,7 @@
  * Header genérico para la plataforma
  */
 $pagina_actual = basename($_SERVER['PHP_SELF']);
-$paginas_auto_ocultables = ['registrar-bien.php', 'importar-excel.php', 'desplazamientos.php', 'nuevo-desplazamiento.php', 'reportes.php', 'historial.php'];
+$paginas_auto_ocultables = ['registrar-bien.php', 'importar-excel.php', 'importar-personas.php', 'desplazamientos.php', 'nuevo-desplazamiento.php', 'reportes.php', 'historial.php'];
 $sidebar_autohide = in_array($pagina_actual, $paginas_auto_ocultables);
 ?>
 <!DOCTYPE html>
