@@ -8,6 +8,10 @@ Un sistema web integral para la gestión y control de bienes patrimoniales insti
 
 ## 🚀 Iniciar Rápidamente
 
+## Integrantes
+- Estrada Flores Axel
+- Rojas Camayo Valentino
+
 ### 1. Instalación
 ```bash
 # Copiar a XAMPP
